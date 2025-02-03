@@ -23,3 +23,6 @@ This is a repository to learn how to use git and github.
 8. git merge
 9. git remote
 10. git
+
+# Utopian website 
+The HTML code for the utopian website was solely created by the Cody chat.
