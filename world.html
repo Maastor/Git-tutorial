@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro World</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-image: linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px solid #0f0;
+            padding: 20px;
+            box-shadow: 0 0 20px #0f0;
+        }
+
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px #008000;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+
+        .retro-button {
+            background-color: #000;
+            color: #0f0;
+            border: 2px solid #0f0;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+
+        .retro-button:hover {
+            background-color: #0f0;
+            color: #000;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #0f0;
+            }
+            to {
+                text-shadow: 0 0 20px #0f0, 0 0 30px #0f0;
+            }
+        }
+
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(0, 255, 0, 0.1) 50%,
+                rgba(255, 255, 255, 0) 100%);
+            animation: scan 8s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(100%); }
+        }
+    </style>
+</head>
+<body>
+    <div class="scanline"></div>
+    <div class="container">
+        <h1>RETRO WORLD</h1>
+        <p>Welcome to the digital frontier of yesterday</p>
+        <button class="retro-button">START PROGRAM</button>
+        <button class="retro-button">SYSTEM CONFIG</button>
+        <button class="retro-button">EXIT SYSTEM</button>
+        
+        <div style="margin-top: 40px;">
+            <p>SYSTEM STATUS: ONLINE</p>
+            <p>MEMORY: 64K RAM SYSTEM</p>
+            <p>READY.</p>
+            <p class="blink">_</p>
+        </div>
+    </div>
+</body>
+</html>
+
