@@ -4,56 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retro World</title>
+    <title>Retro Arcade</title>
     <style>
         body {
             background-color: #000;
-            color: #0f0;
-            font-family: 'Courier New', monospace;
+            color: #ff00ff;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
             text-align: center;
             margin: 0;
             padding: 20px;
-            background-image: linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
+            background-image: 
+                radial-gradient(#ff00ff 1px, transparent 1px),
+                radial-gradient(#00ffff 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            border: 2px solid #0f0;
+            border: 4px solid #ff00ff;
+            border-style: double;
             padding: 20px;
-            box-shadow: 0 0 20px #0f0;
+            box-shadow: 0 0 20px #ff00ff, inset 0 0 20px #ff00ff;
+            background-color: rgba(0, 0, 0, 0.8);
         }
 
         h1 {
-            font-size: 3em;
-            text-shadow: 2px 2px #008000;
-            animation: glow 1.5s ease-in-out infinite alternate;
+            font-size: 4em;
+            color: #ff00ff;
+            text-shadow: 4px 4px #00ffff;
+            animation: blink 0.5s step-end infinite alternate;
+            letter-spacing: 4px;
         }
 
         .retro-button {
             background-color: #000;
-            color: #0f0;
-            border: 2px solid #0f0;
-            padding: 10px 20px;
-            margin: 10px;
+            color: #ff00ff;
+            border: 3px solid #ff00ff;
+            padding: 15px 30px;
+            margin: 15px;
             cursor: pointer;
-            font-family: 'Courier New', monospace;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            text-transform: uppercase;
+            font-size: 1.2em;
+            transition: all 0.2s;
         }
 
         .retro-button:hover {
-            background-color: #0f0;
+            background-color: #ffa200;
             color: #000;
+            transform: scale(1.1);
+            box-shadow: 0 0 15px #ff00ff;
         }
 
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px #0f0;
-            }
-            to {
-                text-shadow: 0 0 20px #0f0, 0 0 30px #0f0;
-            }
+        @keyframes blink {
+            50% { opacity: 0; }
         }
 
         .scanline {
@@ -61,36 +67,61 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom,
-                rgba(255, 255, 255, 0) 0%,
-                rgba(0, 255, 0, 0.1) 50%,
-                rgba(255, 255, 255, 0) 100%);
-            animation: scan 8s linear infinite;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            animation: scan 4s linear infinite;
             pointer-events: none;
         }
 
         @keyframes scan {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(100%); }
+            from { transform: translateY(-100vh); }
+            to { transform: translateY(100vh); }
+        }
+
+        p {
+            color: #00ffff;
+            font-size: 1.2em;
+            text-shadow: 2px 2px #000;
+        }
+
+        .blink {
+            animation: cursor-blink 1s step-end infinite;
+            color: #ff00ff;
+            font-size: 2em;
+        }
+
+        @keyframes cursor-blink {
+            50% { opacity: 0; }
+        }
+
+        .credits {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            color: #ff00ff;
+            font-size: 0.8em;
+            animation: scroll-left 20s linear infinite;
         }
     </style>
 </head>
 <body>
     <div class="scanline"></div>
     <div class="container">
-        <h1>RETRO WORLD</h1>
-        <p>Welcome to the digital frontier of yesterday</p>
-        <button class="retro-button">START PROGRAM</button>
-        <button class="retro-button">SYSTEM CONFIG</button>
-        <button class="retro-button">EXIT SYSTEM</button>
+        <h1>ARCADE ZONE</h1>
+        <p>INSERT COIN TO CONTINUE</p>
+        <button class="retro-button">PLAY NOW</button>
+        <button class="retro-button">HIGH SCORES</button>
+        <button class="retro-button">CREDITS</button>
         
         <div style="margin-top: 40px;">
-            <p>SYSTEM STATUS: ONLINE</p>
-            <p>MEMORY: 64K RAM SYSTEM</p>
-            <p>READY.</p>
-            <p class="blink">_</p>
+            <p>COINS: 0</p>
+            <p>PLAYER 1 READY</p>
+            <p>PRESS START</p>
+            <p class="blink">></p>
         </div>
+    </div>
+    <div class="credits">
+        © 2023 ARCADE ZONE - PUSH START TO BEGIN - HIGH SCORE: 999999 - INSERT COIN
     </div>
 </body>
 </html>
